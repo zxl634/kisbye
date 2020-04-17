@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+  <head>
+    <script src="mqttws31.js"></script>
+    <script src="moja_mqtt2020.js"></script>
+    <script src="chromath.min.js"></script> 
+  </head>
 
-<body>
-<img src="bookpage.jpg" alt="bookpage" width="300" >
+  <body>
+    <img id="img" src="bookpage.jpg" alt="bookpage" width="300">
     <div id="data"></div>
-</img>
+    <script>
+
+      // Se https://developer.mozilla.org/en-US/docs/Web/API/Window/orientationchange_event
+      window.addEventListener("orientationchange", function() {
+        console.log("the orientation of the device is now " + screen.orientation.angle);
+        var imgsrc
+        if (screen.orientation.angle > 70) {
+          imgsrc = "bookpage1.jpg"
+        } else {
+          imgsrc = "bookpage.jpg"
+        }
+        // https://www.w3schools.com/jsref/prop_img_src.asp
+        document.getElementById("img").src = imgsrc
+
+      });
+
+    </script>
+  </body>
 
 
-
-</body>
-
-<script src="mqttws31.js"></script>
-<script src="moja_mqtt2020.js"></script>
-<script src="chromath.min.js"></script> 
-
-  <script>
-
-
-	function handleOrientation(event) //Denne funktion skal ved at tilte telefonen på 70 grader skifte til billede: "bookpage1.jpg"
-	{
-		let val = event.alpha;
-		val = Math.floor(val);
-		document.getElementById("data").innerHTML = val; //Skal denne være her?
-		
-		getElementById('data').setAttribute('src', source); //er det korrekt at tilføje den her? Derudover, hvor fortæller vi, at den skal skifte til bookpage1?
-	}
-	
-	window.addEventListener("deviceorientation", handleOrientation, false);
-	
-	</script>
 </html>
 
 
