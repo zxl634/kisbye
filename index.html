@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+
+<body>
+<img src="bookpage.jpg" alt="bookpage" width="300" >
+    <div id="data"></div>
+</img>
+
+
+
+</body>
+
+<script src="mqttws31.js"></script>
+<script src="moja_mqtt2020.js"></script>
+<script src="chromath.min.js"></script> 
+
+  <script>
+
+
+	function handleOrientation(event) //Denne funktion skal ved at tilte telefonen på 70 grader skifte til billede: "bookpage1.jpg"
+	{
+		let val = event.alpha;
+		val = Math.floor(val);
+		document.getElementById("data").innerHTML = val; //Skal denne være her?
+		
+		getElementById('data').setAttribute('src', source); //er det korrekt at tilføje den her? Derudover, hvor fortæller vi, at den skal skifte til bookpage1?
+	}
+	
+	window.addEventListener("deviceorientation", handleOrientation, false);
+	
+	</script>
+</html>
+
+
+
